@@ -1,0 +1,83 @@
+<html>
+<head>
+	<title>How many animals have been killed so far this year for food?</title>
+	<meta name="description" content="A real-time counter showing the number of animals killed so far this year for food.">
+	<meta property="og:description" content="A real-time counter showing the number of animals killed so far this year for food.">
+	<meta property="og:title" content="How many animals have been killed so far this year for food?"/>
+	<meta property="og:type" content="website"/>
+	<meta property="og:url" content="http://killedsofar.com"/>
+	<meta property="og:image" content="http://upload.wikimedia.org/wikipedia/commons/2/25/Icon-round-Question_mark.jpg"/>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script>
+		var total = 59000000000;
+		var perday = total / 365;
+		var perhour = perday / 24;
+		var permin = perhour / 60;
+		var persec = permin / 60;
+		var permilli = persec / 1000;
+		var pertick = persec / 100;
+		var startingVal = 0;
+		var currDate = new Date();
+		var doy = dayofyear(currDate);
+			
+		function dayofyear(d) {   // d is a Date object
+			var yn = d.getFullYear();
+			var mn = d.getMonth();
+			var dn = d.getDate();
+			var d1 = new Date(yn,0,1,12,0,0); // noon on Jan. 1
+			var d2 = new Date(yn,mn,dn,12,0,0); // noon on input date
+			var ddiff = Math.round((d2-d1)/864e5);
+			return ddiff+1; 
+		}
+		
+		function numberWithCommas(x) {
+   			return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		}
+			
+		function doUpdate() {
+			if (startingVal==0) {
+				startingVal = (perday*doy)
+				+(currDate.getHours()*perhour)
+				+(currDate.getMinutes()*permin)
+				+(currDate.getSeconds()*persec);
+			}
+			$("#total").html(numberWithCommas(Math.round(startingVal)));
+			startingVal+=pertick;
+			var t = setTimeout(doUpdate,10);
+			var top = ($(window).height()/2) - $("#content").height()/2; 
+			$("#content").css("top",top);
+		}
+		
+		doUpdate();
+		
+	</script>
+	<style>
+		#content {
+			font-family:Arial;
+			width:500px;
+			margin:0 auto 0 auto;
+			position:relative;
+			height:240px;
+			text-align:center;
+			width:100%;
+			color:Red;
+		}
+		#total {
+			font-size:5em;
+		}
+		#note {
+			font-size:2em;
+			text-align:center;
+			width:100%;
+		}
+	</style>
+</head>
+<body>
+<div id="floater">
+	<div id="content">
+		<span id="total"></span> 
+		<div id="note">animals killed for food so far this year</div>
+	</div>
+</div>		
+</body>
+</html>
