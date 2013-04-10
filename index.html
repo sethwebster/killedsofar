@@ -2,13 +2,14 @@
 <head>
 	<title>How many animals have been killed so far this year for food?</title>
 	<meta name="description" content="A real-time counter showing the number of animals killed so far this year for food.">
-	<meta property="og:description" content="A real-time counter showing the number of animals killed so far this year for food.">
 	<meta property="og:title" content="How many animals have been killed so far this year for food?"/>
 	<meta property="og:type" content="website"/>
 	<meta property="og:url" content="http://killedsofar.com"/>
 	<meta property="og:image" content="http://upload.wikimedia.org/wikipedia/commons/2/25/Icon-round-Question_mark.jpg"/>
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script>
+		if (document.domain!="killedsofar.com")
+			window.location = "http://killedsofar.com";
 		var total = 59000000000;
 		var perday = total / 365;
 		var perhour = perday / 24;
@@ -41,17 +42,24 @@
 				+(currDate.getMinutes()*permin)
 				+(currDate.getSeconds()*persec);
 			}
-			$("#total").html(numberWithCommas(Math.round(startingVal)));
+			$("#total").html	(numberWithCommas(Math.round(startingVal)));
 			startingVal+=pertick;
 			var t = setTimeout(doUpdate,10);
 			var top = ($(window).height()/2) - $("#content").height()/2; 
 			$("#content").css("top",top);
 		}
-		
+		  
 		doUpdate();
 		
 	</script>
 	<style>
+		html { 
+			background: url(Slaughterhouse_cattle_bodies.jpg) no-repeat center center fixed; 
+		  	-webkit-background-size: cover;
+		  	-moz-background-size: cover;
+		  	-o-background-size: cover;
+		  	background-size: cover;
+		}
 		#content {
 			font-family:Arial;
 			width:500px;
@@ -60,24 +68,59 @@
 			height:240px;
 			text-align:center;
 			width:100%;
-			color:Red;
+			color:white;
 		}
 		#total {
 			font-size:5em;
+			padding:25px;
+			background-color:rgba(255,255,255,.5);
+			width:550px;
+			margin:0 auto 0 auto;
+			-moz-border-radius: 10px 10px  10px 10px;
+			border-radius: 10px 10px 10px 10px;
 		}
 		#note {
 			font-size:2em;
 			text-align:center;
 			width:100%;
 		}
+		.clear-fix { clear:both; }
 	</style>
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-17288532-8', 'killedsofar.com');
+		ga('send', 'pageview');
+
+	</script>
+	<div id="fb-root"></div>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=567092209977627";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 </head>
 <body>
 <div id="floater">
 	<div id="content">
-		<span id="total"></span> 
+		<div id="total"></div> 
 		<div id="note">animals killed for food so far this year</div>
-	</div>
+		<div class='clear-fix'></div>
+		<div class="fb-like" data-href="http://killedsofar.com" data-send="true" data-width="530" data-show-faces="true"></div>
+		<div class='clear-fix'></div>
+		<div class='clear-fix'></div>
+		<div class="fb-comments" data-href="http://killedsofar.com" data-width="550" data-num-posts="10" data-colorscheme="dark"></div>
+		<div class='clear-fix'></div>
+		<a href="http://twitter.com/killedsofar" target="_new">@killedsofar</a>
+		<a href="http://facebook.com/killedsofar" target="_new">Killed So Far</a>
+			</div>
+		
 </div>		
 </body>
 </html>
