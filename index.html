@@ -45,14 +45,15 @@
 				+(currDate.getMinutes()*permin)
 				+(currDate.getSeconds()*persec);
 			}
-			$("#total").html	(numberWithCommas(Math.round(startingVal)));
+			$("#total").html(numberWithCommas(Math.round(startingVal)));
 			startingVal+=pertick;
 			var t = setTimeout(doUpdate,10);
-			var top = ($(window).height()/2) - $("#content").height()/2; 
-			$("#content").css("top",top);
+			var top = ($(document).height()/2) - $("#content").height()/2; 
+			var contentHeight = $("#content").height();
+			$("#content").css("top",top+"px");
 		}
 		  
-		doUpdate();
+		$(document).ready(function() { doUpdate(); });
 		
 	</script>
 	<style>
@@ -109,40 +110,39 @@
 
 	</script>
 	<div id="fb-root"></div>
-<div id="fb-root"></div>
-<!-- ADDED -->
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=567092209977627";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+	<script>
+		(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=567092209977627";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
 </head>
 <body>
-<div id="floater">
-	<div id="sharethis">
-			<a href="http://twitter.com/killedsofar" target="_new">
-				<img src="twittericon.png" width="45" border="0" />
-			</a>
-			<a href="http://facebook.com/killedsofar" target="_new">
-				<img src="facebookicon.png" width="53" border="0" />
-			</a>
-	</div>
-	<div id="content">
-		<div id="like-wrapper">
-			<div class="fb-like" data-href="http://killedsofar.com" data-send="true" data-width="230" data-show-faces="false"></div>	
+	<div id="floater">
+		<div id="sharethis">
+				<a href="http://twitter.com/killedsofar" target="_new">
+					<img src="twittericon.png" width="45" border="0" />
+				</a>
+				<a href="http://facebook.com/killedsofar" target="_new">
+					<img src="facebookicon.png" width="53" border="0" />
+				</a>
 		</div>
-		<div class='clear-fix'></div>
-		<div id="total"></div> 
-		<div id="note">
-			animals killed for food so far this year
+		<div id="content">
+			<div id="like-wrapper">
+				<div class="fb-like" data-href="http://killedsofar.com" data-send="true" data-width="230" data-show-faces="false"></div>	
+			</div>
+			<div class='clear-fix'></div>
+			<div id="total"></div> 
+			<div id="note">
+				animals killed for food so far this year
+			</div>
+			<div class='clear-fix'></div>
+			<div class="fb-comments" data-href="http://killedsofar.com" data-width="550" data-num-posts="10" data-colorscheme="dark"></div>
+			<div class='clear-fix'></div>
 		</div>
-		<div class='clear-fix'></div>
-		<div class="fb-comments" data-href="http://killedsofar.com" data-width="550" data-num-posts="10" data-colorscheme="dark"></div>
-		<div class='clear-fix'></div>
-	</div>
-		
-</div>		
+	</div>		
 </body>
 </html>
