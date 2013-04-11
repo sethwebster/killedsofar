@@ -8,125 +8,9 @@
 	<meta property="og:type" content="website"/>
 	<meta property="og:image" content="http://killedsofar.com/Slaughterhouse-Floor.jpg"/>
 	<meta property="fb:app_id" content="567092209977627" />
-	
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-	<script>
-		var domain = "killedsofar.com";
-		if (document.domain!=domain && document.domain!="")
-			window.location = "http://"+domain;
-		var total = 59000000000;
-		var perday = total / 365;
-		var perhour = perday / 24;
-		var permin = perhour / 60;
-		var persec = permin / 60;
-		var permilli = persec / 1000;
-		var pertick = persec / 100;
-		var startingVal = 0;
-		var currDate = new Date();
-		var doy = dayofyear(currDate);
-		
-		var images = Array();
-		images[0] = "Slaughterhouse_cattle_bodies.jpg";
-		images[1] = "Slaughterhouse-Floor.jpg";
-		
-		var selectedImage = images[Math.floor((Math.random()*images.length))];
-		
-		
-		
-		function dayofyear(d) {   // d is a Date object
-			var yn = d.getFullYear();
-			var mn = d.getMonth();
-			var dn = d.getDate();
-			var d1 = new Date(yn,0,1,12,0,0); // noon on Jan. 1
-			var d2 = new Date(yn,mn,dn,12,0,0); // noon on input date
-			var ddiff = Math.round((d2-d1)/864e5);
-			return ddiff+1; 
-		}
-		
-		function numberWithCommas(x) {
-   			return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		}
-			
-		function doUpdate() {
-			if (startingVal==0) {
-				startingVal = (perday*doy)
-				+(currDate.getHours()*perhour)
-				+(currDate.getMinutes()*permin)
-				+(currDate.getSeconds()*persec);
-			}
-			$("#total").html(numberWithCommas(Math.round(startingVal)));
-			startingVal+=pertick;
-			var t = setTimeout(doUpdate,10);
-			var top = ($(document).height()/2) - $("#content").height()/2; 
-			var contentHeight = $("#content").height();
-			$("#content").css("top",top+"px");
-			$("html").css("background-image","url("+selectedImage+")");
-		}
-		  
-		$(document).ready(function() { 
-			setTimeout(function() {
-				$("#floater").fadeIn({duration:3000});
-			}, 3000);
-			doUpdate(); 
-		});
-		
-	</script>
-	<style>
-		html { 
-			background: url() no-repeat center center fixed; 
-		  	-webkit-background-size: cover;
-		  	-moz-background-size: cover;
-		  	-o-background-size: cover;
-		  	background-size: cover;
-		  
-		}
-		#content {
-			font-family:Arial;
-			width:500px;
-			margin:0 auto 0 auto;
-			position:relative;
-			height:240px;
-			text-align:center;
-			width:100%;
-			color:white;
-			
-		}
-		#total-wrapper {
-			background-color: rgba(1,1, 1, 0.5);
-			border-radius: 10px 10px 10px 10px;
-			padding: 25px;
-			width: 550px;
-			margin: 0px auto;
-		}
-		#total {
-    		font-size: 5em;
-		}
-		#note {
-			font-size:2em;
-			text-align:center;
-			width:100%;
-		}
-		.clear-fix { clear:both; }
-		#sharethis {
-			position:absolute;
-			right:0px;
-		}
-		#like-wrapper { 
-			
-		}
-		#floater { display:none; }
-		.fb-like { float:left;padding-top:10px;display:inline; }
-	</style>
-	<script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-		ga('create', 'UA-17288532-8', 'killedsofar.com');
-		ga('send', 'pageview');
-
-	</script>
+	<script src="s.js"></script>
+	<link href="site.css" rel="stylesheet" />
 	<div id="fb-root"></div>
 	<script>
 		(function(d, s, id) {
@@ -157,6 +41,14 @@
 			<div class="fb-comments" data-href="http://killedsofar.com" data-width="550" data-num-posts="10" data-colorscheme="dark"></div>
 			<div class='clear-fix'></div>
 		</div>
-	</div>		
+	</div>	
+		<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-17288532-8', 'killedsofar.com');
+		ga('send', 'pageview');
+	</script>	
 </body>
 </html>

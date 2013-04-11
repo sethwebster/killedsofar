@@ -1,0 +1,43 @@
+html { 
+	background: url() no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover; 
+}
+#content {
+	font-family:Arial;
+	width:500px;
+	margin:0 auto 0 auto;
+	position:relative;
+	height:240px;
+	text-align:center;
+	width:100%;
+	color:white;
+	
+}
+#total-wrapper {
+	background-color: rgba(1,1, 1, 0.5);
+	border-radius: 10px 10px 10px 10px;
+	padding: 25px;
+	width: 550px;
+	margin: 0px auto;
+}
+#total {
+	font-size: 5em;
+}
+#note {
+	font-size:2em;
+	text-align:center;
+	width:100%;
+}
+.clear-fix { clear:both; }
+#sharethis {
+	position:absolute;
+	right:0px;
+}
+#like-wrapper { 
+	
+}
+#floater { display:none; }
+.fb-like { float:left;padding-top:10px;display:inline; }
