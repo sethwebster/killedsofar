@@ -2,6 +2,8 @@
 <html>
 <head>
 	<title>How many animals have been killed so far this year for food?</title>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
 	<meta name="description" content="A real-time counter showing the number of animals killed so far this year for food.">
 	<meta property="og:title" content="How many animals have been killed so far this year for food?"/>
 	<meta property="og:type" content="website"/>
@@ -9,8 +11,9 @@
 	<meta property="og:image" content="http://upload.wikimedia.org/wikipedia/commons/2/25/Icon-round-Question_mark.jpg"/>
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script>
-		if (document.domain!="killedsofar.com")
-			window.location = "http://killedsofar.com";
+		var domain = "killedsofar.com";
+		if (document.domain!=domain && document.domain!="")
+			window.location = "http://"+domain;
 		var total = 59000000000;
 		var perday = total / 365;
 		var perhour = perday / 24;
@@ -112,16 +115,24 @@
 <div id="floater">
 	<div id="content">
 		<div id="total"></div> 
-		<div id="note">animals killed for food so far this year</div>
+		<div id="note">
+			animals killed for food so far this year
+		</div>
 		<div class='clear-fix'></div>
 		<div class="fb-like" data-href="http://killedsofar.com" data-send="true" data-width="530" data-show-faces="true"></div>
 		<div class='clear-fix'></div>
 		<div class='clear-fix'></div>
 		<div class="fb-comments" data-href="http://killedsofar.com" data-width="550" data-num-posts="10" data-colorscheme="dark"></div>
 		<div class='clear-fix'></div>
-		<a href="http://twitter.com/killedsofar" target="_new">@killedsofar</a>
-		<a href="http://facebook.com/killedsofar" target="_new">Killed So Far</a>
-			</div>
+		<div id="sharethis">
+			<a href="http://twitter.com/killedsofar" target="_new">
+				<img src="twittericon.png" width="45" border="0" />
+			</a>
+			<a href="http://facebook.com/killedsofar" target="_new">
+				<img src="facebookicon.png" width="53" border="0" />
+			</a>
+		</div>
+	</div>
 		
 </div>		
 </body>
