@@ -39,6 +39,7 @@ function doUpdate() {
 		+(currDate.getMinutes()*permin)
 		+(currDate.getSeconds()*persec);
 		$("html").css("background-image","url("+selectedImage+")");
+		$("#version").load("DEPLOYED_VERSION.txt", function() { });
 	}
 	$("#total").html(numberWithCommas(Math.round(startingVal)));
 	startingVal+=pertick;
@@ -46,6 +47,7 @@ function doUpdate() {
 	var top = ($(window).height()/2) - $("#content").height()/2; 
 	var contentHeight = $("#content").height();
 	$("#content").css("top",top+"px");
+	
 }
   
 $(document).ready(function() { 
