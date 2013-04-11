@@ -53,7 +53,10 @@
 			$("#content").css("top",top+"px");
 		}
 		  
-		$(document).ready(function() { doUpdate(); });
+		$(document).ready(function() { 
+			$("#floater").fadeIn({duration:3000});
+			doUpdate(); 
+		});
 		
 	</script>
 	<style>
@@ -63,6 +66,7 @@
 		  	-moz-background-size: cover;
 		  	-o-background-size: cover;
 		  	background-size: cover;
+		  
 		}
 		#content {
 			font-family:Arial;
@@ -73,14 +77,17 @@
 			text-align:center;
 			width:100%;
 			color:white;
+			
+		}
+		#total-wrapper {
+			background-color: rgba(1,1, 1, 0.5);
+			border-radius: 10px 10px 10px 10px;
+			padding: 25px;
+			width: 550px;
+			margin: 0px auto;
 		}
 		#total {
     		font-size: 5em;
-			padding: 25px;
-			background-color: rgba(1,1, 1, 0.5);
-			width: 550px;
-			margin: 0px auto;
-			border-radius: 10px 10px 10px 10px;
 		}
 		#note {
 			font-size:2em;
@@ -95,6 +102,7 @@
 		#like-wrapper { 
 			
 		}
+		#floater { display:none; }
 		.fb-like { float:left;padding-top:10px;display:inline; }
 	</style>
 	<script>
@@ -122,18 +130,16 @@
 	<div id="floater">
 		<div id="sharethis">
 			<div class="fb-like" data-href="http://killedsofar.com" data-send="true" data-width="230" data-show-faces="false"></div>	
-			<a href="http://twitter.com/killedsofar" target="_new">
-				<img src="twittericon.png" width="45" border="0" />
-			</a>
-			<a href="http://facebook.com/killedsofar" target="_new">
-				<img src="facebookicon.png" width="53" border="0" />
-			</a>
+			<a href="http://twitter.com/killedsofar" target="_new"><img src="twittericon.png" width="45" border="0" /></a>
+			<a href="http://facebook.com/killedsofar" target="_new"><img src="facebookicon.png" width="53" border="0" /></a>
 		</div>
 		<div id="content">
 			<div class='clear-fix'></div>
-			<div id="total"></div> 
-			<div id="note">
-				animals killed for food so far this year
+			<div id="total-wrapper">
+				<div id="total"></div> 
+				<div id="note">
+					animals killed for food so far this year
+				</div>
 			</div>
 			<div class='clear-fix'></div>
 			<div class="fb-comments" data-href="http://killedsofar.com" data-width="550" data-num-posts="10" data-colorscheme="dark"></div>
