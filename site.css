@@ -4,6 +4,8 @@ html {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover; 
+	font-family:Arial;
+	
 }
 #content {
 	font-family:Arial;
@@ -33,11 +35,31 @@ html {
 }
 .clear-fix { clear:both; }
 #sharethis {
+	border-radius: 10px 10px 10px 10px;
 	position:absolute;
 	right:0px;
+	background-color:rgba(1,1,1,.5);
+	padding:5px;
+	padding-top:20px;
 }
+
+#sharethis h3 {
+	color:white;
+	float:left;
+	position:relative;
+	top:-5px;
+	
+}
+
 #like-wrapper { 
 	
 }
 #floater { display:none; }
 .fb-like { float:left;padding-top:10px;display:inline; }
+#version { 
+	color:rgba(225,100,100,.6);
+	font-size:.5em; 
+	position:absolute;
+	bottom:-20px;
+	margin:0 auto 0 auto;
+}

@@ -44,7 +44,9 @@ function doUpdate() {
 	$("#total").html(numberWithCommas(Math.round(startingVal)));
 	startingVal+=pertick;
 	var t = setTimeout(doUpdate,10);
-	var top = ($(window).height()/2) - $("#content").height()/2; 
+	
+	var top = $.browser.mozilla ? ($(document).height()/2) - $("#content").height()/2 :
+		($(window).height()/2) - $("#content").height()/2; 
 	var contentHeight = $("#content").height();
 	$("#content").css("top",top+"px");
 	
