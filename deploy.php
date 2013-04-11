@@ -40,7 +40,7 @@ define('BRANCH', 'master');
  *
  * @var string Full path including the trailing slash
  */
-define('TARGET_DIR', '/tmp/simple-php-git-deploy/');
+define('TARGET_DIR', '/var/www/vhosts/deadsofar.com/httpdocs/');
 
 /**
  * Weather to delete the files that are not in the repository but are on the
