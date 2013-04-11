@@ -54,7 +54,9 @@
 		}
 		  
 		$(document).ready(function() { 
-			$("#floater").fadeIn({duration:3000});
+			setTimeout(function() {
+				$("#floater").fadeIn({duration:3000});
+			}, 3000);
 			doUpdate(); 
 		});
 		
