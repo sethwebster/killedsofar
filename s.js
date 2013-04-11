@@ -12,14 +12,11 @@ var startingVal = 0;
 var currDate = new Date();
 var doy = dayofyear(currDate);
 
-
 var images = Array();
 images[0] = "Slaughterhouse_cattle_bodies.jpg";
 images[1] = "Slaughterhouse-Floor.jpg";
 
 var selectedImage = images[Math.floor((Math.random()*images.length))];
-
-
 
 function dayofyear(d) {   // d is a Date object
 	var yn = d.getFullYear();
@@ -41,6 +38,7 @@ function doUpdate() {
 		+(currDate.getHours()*perhour)
 		+(currDate.getMinutes()*permin)
 		+(currDate.getSeconds()*persec);
+		$("html").css("background-image","url("+selectedImage+")");
 	}
 	$("#total").html(numberWithCommas(Math.round(startingVal)));
 	startingVal+=pertick;
@@ -48,7 +46,6 @@ function doUpdate() {
 	var top = ($(document).height()/2) - $("#content").height()/2; 
 	var contentHeight = $("#content").height();
 	$("#content").css("top",top+"px");
-	$("html").css("background-image","url("+selectedImage+")");
 }
   
 $(document).ready(function() { 
