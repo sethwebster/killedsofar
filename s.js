@@ -1,16 +1,23 @@
+var killedCounter = {
+
+}
+
 var domain = "killedsofar.com";
 if (document.domain!=domain && document.domain!="")
 	window.location = "http://"+domain;
+
+var ticklength = 50;
 var total = 59000000000;
 var perday = total / 365;
 var perhour = perday / 24;
 var permin = perhour / 60;
 var persec = permin / 60;
 var permilli = persec / 1000;
-var pertick = persec / 100;
+var pertick = persec / (1000/ticklength);
 var startingVal = 0;
 var currDate = new Date();
 var doy = dayofyear(currDate);
+var isInitialized = false;
 
 var images = Array();
 images[0] = "Slaughterhouse_cattle_bodies.jpg";
@@ -31,28 +38,37 @@ function dayofyear(d) {   // d is a Date object
 function numberWithCommas(x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+
+function getCurrentValue() {
+	var currDate = new Date();
 	
-function doUpdate() {
-	if (startingVal==0) {
-		startingVal = (perday*doy)
+	startingVal = (perday*doy)
 		+(currDate.getHours()*perhour)
 		+(currDate.getMinutes()*permin)
-		+(currDate.getSeconds()*persec);
-		$("html").css("background-image","url("+selectedImage+")");
-		$("#version").load("DEPLOYED_VERSION.txt", function() { });
-	}
-	$("#total").html(numberWithCommas(Math.round(startingVal)));
-	startingVal+=pertick;
-	var t = setTimeout(doUpdate,10);
-	
-	var top = $.browser.mozilla ? ($(document).height()/2) - $("#content").height()/2 :
-		($(window).height()/2) - $("#content").height()/2; 
+		+(currDate.getSeconds()*persec)
+		+(currDate.getMilliseconds()*permilli);
+
+	return startingVal;
+}	
+
+function intialize() {
+	if (isInitialized)
+		return;
+	var selectedImage = images[Math.floor((Math.random()*images.length))];
+	$("html").css("background-image","url("+selectedImage+")");
+	isInitialized = true;
+	$("#version").load("DEPLOYED_VERSION.txt");
+}
+function doUpdate() {
+	$("#total").html(numberWithCommas(Math.round(getCurrentValue())));
+	var top = ($(window).height()/2) - $("#content").height()/2; 
 	var contentHeight = $("#content").height();
 	$("#content").css("top",top+"px");
-	
+	var t = setTimeout(doUpdate,ticklength);	
 }
   
 $(document).ready(function() { 
+	intialize();
 	setTimeout(function() {
 		$("#floater").fadeIn({duration:3000});
 	}, 3000);

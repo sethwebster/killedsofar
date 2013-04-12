@@ -4,11 +4,9 @@ html {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover; 
-	font-family:Arial;
-	
+	font-family:Myriad Pro, Lobster;	
 }
 #content {
-	font-family:Arial;
 	width:500px;
 	margin:0 auto 0 auto;
 	position:relative;
@@ -54,12 +52,15 @@ html {
 #like-wrapper { 
 	
 }
+
 #floater { display:none; }
+
 .fb-like { float:left;padding-top:10px;display:inline; }
+
 #version { 
 	color:rgba(225,100,100,.6);
 	font-size:.5em; 
 	position:absolute;
-	bottom:-20px;
+	bottom:10px;
 	margin:0 auto 0 auto;
 }
