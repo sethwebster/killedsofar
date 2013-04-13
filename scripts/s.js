@@ -1,11 +1,12 @@
 var KilledCounter = function() {
 	
-	this.selectedImage = null;
+	this.selectedImageIndex = -1;
 	this.images = Array();
 	
 	this.settings = {
 		tickLength : 50,
-		domain : "killedsofar.com"
+		ticksBeforeImageChange: 200,
+		domain : "killedsofar.com",
 	}
 
 	this.start = function() {
@@ -28,10 +29,8 @@ var KilledCounter = function() {
 	}
 	
 	this.initializeInterface = function() {
-		this.selectedImage = this.images[Math.floor((Math.random()*this.images.length))];
-		$("html").css("background-image","url("+this.selectedImage.path+")");
+		this.initializeAndSelectBackground();
 		$("#version").load("DEPLOYED_VERSION.txt");
-		$("#credit").html("Image Credit: "+this.selectedImage.credit);
 		
 		setTimeout(function() {
 			$("#floater").fadeIn({duration:3000});
@@ -40,6 +39,18 @@ var KilledCounter = function() {
 			$("#comments-wrapper").fadeIn({duration:1000});
 		}, 5000);
 		this.doUpdate();
+	}
+	
+	this.initializeAndSelectBackground = function() {
+		if (this.selectedImageIndex	== -1) {
+			this.selectedImageIndex = Math.floor((Math.random()*this.images.length));
+		}
+		if (this.selectedImageIndex >= this.images.length) {
+			this.selectedImageIndex = 0;
+		}
+		this.selectedImage = this.images[this.selectedImageIndex];
+		$("html").css("background-image","url("+this.selectedImage.path+")");
+		$("#credit").html("Image Credit: "+this.selectedImage.credit);
 	}
 	
 	this.initializeCounterValues = function() {
@@ -56,6 +67,7 @@ var KilledCounter = function() {
 		this.currentVal = 0;
 		this.currDate = new Date();
 		this.countervalues.doy = this.dayOfYear(this.currDate);
+		this.countervalues.ticks = 0;
 	}	
 	
 	this.positionCounter = function() {
@@ -81,6 +93,14 @@ var KilledCounter = function() {
 	}
 	
 	this.doUpdate = function() {
+		this.countervalues.ticks++;
+		
+		if (this.countervalues.ticks>this.settings.ticksBeforeImageChange) {
+			this.selectedImageIndex++;
+			this.initializeAndSelectBackground();
+			this.countervalues.ticks = 0;
+		}
+		
 		this.updateCurrentValue();
 		this.positionCounter();
 		$("#total").html(numberWithCommas(Math.round(this.currentVal)));
