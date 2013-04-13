@@ -62,7 +62,6 @@ html {
 }
 #comments-wrapper {
 	width:100%;
-	overflow:scroll;
 	width:650px;
 	display:none;
 }
