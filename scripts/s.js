@@ -62,10 +62,6 @@ function intialize() {
 	isInitialized = true;
 	$("#version").load("DEPLOYED_VERSION.txt");
 	$("#credit").html("Image Credit: "+selectedImage.credit);
-}
-
-function doUpdate() {
-	$("#total").html(numberWithCommas(Math.round(getCurrentValue())));
 	var pointer = window;
 	if ($(window).height() != $(document).height())
 	{
@@ -74,6 +70,10 @@ function doUpdate() {
 	}
 	var top = ($(pointer).height()/2) - $("#floater").height()/2; 
 	$("#floater").css("top",top+"px");
+}
+
+function doUpdate() {
+	$("#total").html(numberWithCommas(Math.round(getCurrentValue())));
 	var t = setTimeout(doUpdate,ticklength);	
 }
   
