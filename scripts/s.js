@@ -63,10 +63,16 @@ function intialize() {
 	$("#version").load("DEPLOYED_VERSION.txt");
 	$("#credit").html("Image Credit: "+selectedImage.credit);
 }
+
 function doUpdate() {
 	$("#total").html(numberWithCommas(Math.round(getCurrentValue())));
-	var top = ($(window).height()/2) - $("#floater").height()/2; 
-	var contentHeight = $("#content").height();
+	var pointer = window;
+	if ($(window).height() != $(document).height())
+	{
+		// Mozilla HACK
+		pointer = document;
+	}
+	var top = ($(pointer).height()/2) - $("#floater").height()/2; 
 	$("#floater").css("top",top+"px");
 	var t = setTimeout(doUpdate,ticklength);	
 }
