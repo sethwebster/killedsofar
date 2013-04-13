@@ -6,6 +6,13 @@ html {
 	background-size: cover; 
 	font-family:Myriad Pro, Lobster;	
 }
+
+#floater { 
+	display:none;
+	position:relative;
+	top:-80px;
+}
+
 #content {
 	width:500px;
 	margin:0 auto 0 auto;
@@ -32,14 +39,15 @@ html {
 	width:100%;
 }
 .clear-fix { clear:both; }
-#sharethis {
-	position:absolute;
-	right:0px;
+#likeandfollow {
 	padding:5px;
-	padding-top:20px;
+	padding-top:10px;
 }
 
-#sharethis h3 {
+#likeandfollow #followbuttons {
+	float:right;
+}
+#likeandfollow h3 {
 	color:white;
 	float:left;
 	position:relative;
@@ -47,13 +55,20 @@ html {
 	margin-right:10px;
 }
 
+#likebutton {
+	width:350px;
+	float:left;
+}
+
 #like-wrapper { 
 	
 }
 
-#floater { display:none; }
-
-.fb-like { float:left;padding-top:10px;display:inline; }
+.fb-like {
+	margin:0 auto 0 auto;
+	padding:20px;
+	border-radius: 10px 10px 10px 10px;
+}
 
 #version { 
 	color:rgba(225,100,100,.6);
