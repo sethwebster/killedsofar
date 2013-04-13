@@ -61,9 +61,9 @@ function intialize() {
 }
 function doUpdate() {
 	$("#total").html(numberWithCommas(Math.round(getCurrentValue())));
-	var top = ($(window).height()/2) - $("#content").height()/2; 
+	var top = ($(window).height()/2) - $("#floater").height()/2; 
 	var contentHeight = $("#content").height();
-	$("#content").css("top",top+"px");
+	$("#floater").css("top",top+"px");
 	var t = setTimeout(doUpdate,ticklength);	
 }
   

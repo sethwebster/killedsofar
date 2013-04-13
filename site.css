@@ -11,9 +11,6 @@ html {
 	display:none;
 	position:relative;
 	top:-80px;
-}
-
-#content {
 	width:500px;
 	margin:0 auto 0 auto;
 	position:relative;
@@ -21,15 +18,15 @@ html {
 	text-align:center;
 	width:100%;
 	color:white;
-	
 }
+
 #total-wrapper {
 	background-color: rgba(1,1, 1, 0.5);
 	border-radius: 10px 10px 10px 10px;
-	padding: 25px;
 	width: 550px;
 	margin: 0px auto;
 }
+
 #total {
 	font-size: 5em;
 }
