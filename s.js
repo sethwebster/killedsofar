@@ -72,6 +72,9 @@ $(document).ready(function() {
 	setTimeout(function() {
 		$("#floater").fadeIn({duration:3000});
 	}, 3000);
+	setTimeout(function() {
+		$("#comments-wrapper").fadeIn({duration:3000});
+	}, 6000);
 	doUpdate(); 
 });
 
