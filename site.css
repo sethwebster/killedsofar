@@ -60,7 +60,10 @@ html {
 #like-wrapper { 
 	
 }
-
+#comments-wrapper {
+	width:100%;
+	overflow:scroll;
+}
 #comments {
 	background-color: rgba(200,200, 200, 0.8);
 	width:650px;
