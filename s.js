@@ -20,8 +20,11 @@ var doy = dayofyear(currDate);
 var isInitialized = false;
 
 var images = Array();
-images[0] = "Slaughterhouse_cattle_bodies.jpg";
-images[1] = "Slaughterhouse-Floor.jpg";
+images[0] = {path:"Slaughterhouse_cattle_bodies.jpg",credit:""};
+images[1] = {path:"Slaughterhouse-Floor.jpg",credit:""};
+images[2] = {path:"BeautifulCow.jpg",credit:"Jim Champion, Flickr"};
+images[3] = {path:"Lamb.jpg",credit:"Donald Macleod, Flickr"};
+images[4] = {path:"Piglet.jpg",credit:"Sander van der Wel, Flickr"};
 
 var selectedImage = images[Math.floor((Math.random()*images.length))];
 
@@ -55,9 +58,10 @@ function intialize() {
 	if (isInitialized)
 		return;
 	var selectedImage = images[Math.floor((Math.random()*images.length))];
-	$("html").css("background-image","url("+selectedImage+")");
+	$("html").css("background-image","url("+selectedImage.path+")");
 	isInitialized = true;
 	$("#version").load("DEPLOYED_VERSION.txt");
+	$("#credit").html("Image Credit: "+selectedImage.credit);
 }
 function doUpdate() {
 	$("#total").html(numberWithCommas(Math.round(getCurrentValue())));
