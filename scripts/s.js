@@ -29,6 +29,7 @@ var KilledCounter = function() {
 	}
 	
 	this.initializeInterface = function() {
+		this.positionCounter();
 		this.initializeAndSelectBackground();
 		$("#version").load("DEPLOYED_VERSION.txt");
 		
@@ -102,7 +103,6 @@ var KilledCounter = function() {
 		}
 		
 		this.updateCurrentValue();
-		this.positionCounter();
 		$("#total").html(numberWithCommas(Math.round(this.currentVal)));
 		var _this = this;
 		var t = setTimeout(function() {
