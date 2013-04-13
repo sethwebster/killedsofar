@@ -77,7 +77,7 @@ var KilledCounter = function() {
 			// Mozilla HACK
 			pointer = document;
 		}
-		var top = ($(pointer).height()/2) - 350/2; 
+		var top = ($(pointer).height()/2) - (350/2); 
 		$("#floater").css("top",top+"px");
 	}
 	
