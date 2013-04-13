@@ -63,6 +63,7 @@ html {
 #comments-wrapper {
 	width:100%;
 	width:650px;
+	margin:0 auto 0 auto;
 	display:none;
 }
 #comments {
