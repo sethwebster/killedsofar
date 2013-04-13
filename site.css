@@ -11,7 +11,7 @@ html {
 	display:none;
 	position:relative;
 	top:-80px;
-	width:500px;
+	width:650px;
 	margin:0 auto 0 auto;
 	position:relative;
 	height:240px;
@@ -23,12 +23,12 @@ html {
 #total-wrapper {
 	background-color: rgba(1,1, 1, 0.5);
 	border-radius: 10px 10px 10px 10px;
-	width: 550px;
-	margin: 0px auto;
+	width: 650px;
+	margin:0 auto 0 auto;
 }
 
 #total {
-	font-size: 5em;
+	font-size: 6em;
 }
 #note {
 	font-size:2em;
@@ -63,7 +63,7 @@ html {
 
 #comments {
 	background-color: rgba(200,200, 200, 0.8);
-	width:550px;
+	width:650px;
 	margin:10 auto 0 auto;
 	padding:10px;
 }
