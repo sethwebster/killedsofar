@@ -94,5 +94,7 @@ html {
 	margin:0 auto 0 auto;
 }
 #hiddenimages {
-	display:none;
+	height:0px;
+	width:0px;
+	overflow:hidden;
 }
