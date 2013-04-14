@@ -4,7 +4,7 @@ var KilledCounter = function() {
 	this.images = Array();
 	
 	this.settings = {
-		tickLength : 200,
+		tickLength : 100,
 		ticksBeforeImageChange: 5000,
 		domain : "killedsofar.com",
 	}
