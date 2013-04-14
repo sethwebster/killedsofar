@@ -4,8 +4,8 @@ var KilledCounter = function() {
 	this.images = Array();
 	
 	this.settings = {
-		tickLength : 50,
-		ticksBeforeImageChange: 100,
+		tickLength : 200,
+		ticksBeforeImageChange: 5000,
 		domain : "killedsofar.com",
 	}
 
@@ -61,6 +61,7 @@ var KilledCounter = function() {
 		this.selectedImage = this.images[this.selectedImageIndex];
 		$("html").css("background-image","url("+this.selectedImage.path+")");
 		$("#credit").html("Image Credit: "+this.selectedImage.credit);
+		this.lastImageSet = new Date();
 	}
 	
 	this.initializeCounterValues = function() {
@@ -105,14 +106,16 @@ var KilledCounter = function() {
 	this.doUpdate = function() {
 		this.countervalues.ticks++;
 		
-		if (this.countervalues.ticks>this.settings.ticksBeforeImageChange) {
+		if (new Date().getTime()-this.lastImageSet.getTime() > this.settings.ticksBeforeImageChange) {
 			this.selectedImageIndex++;
 			this.initializeAndSelectBackground();
 			this.countervalues.ticks = 0;
 		}
 		
 		this.updateCurrentValue();
+		
 		$("#total").html(numberWithCommas(Math.round(this.currentVal)));
+		
 		var _this = this;
 		var t = setTimeout(function() {
 			_this.doUpdate();
