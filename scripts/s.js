@@ -26,6 +26,13 @@ var KilledCounter = function() {
 		this.images.push({path:"images/BeautifulCow.jpg",credit:"Jim Champion, Flickr"});
 		this.images.push({path:"images/Lamb.jpg",credit:"Donald Macleod, Flickr"});
 		this.images.push({path:"images/Piglet.jpg",credit:"Sander van der Wel, Flickr"});
+		
+		var imagesStr = "";
+		for(var i=0;i<this.images.length;i++)
+		{
+			imagesStr+="<img src='"+this.images[i].path+"'/>";
+		}
+		$("#hiddenimages").html(imagesStr);
 	}
 	
 	this.initializeInterface = function() {

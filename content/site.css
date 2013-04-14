@@ -93,3 +93,6 @@ html {
 	float:right;
 	margin:0 auto 0 auto;
 }
+#hiddenimages {
+	display:none;
+}
