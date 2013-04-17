@@ -28,6 +28,7 @@ var KilledCounter = function() {
 		this.images.push({path:"images/Lamb.jpg",credit:"Donald Macleod, Flickr"});
 		this.images.push({path:"images/Piglet.jpg",credit:"Sander van der Wel, Flickr"});
 		this.images.push({path:"images/calf-bw.jpg",credit:"Edward Dalmulder, Flickr"});
+		this.images.push({path:"images/chicken1.jpg",credit:"cuatrok77, Flickr"});
 		this.images.push({path:"images/Cute%20piglet.jpg",credit:"http://www.stanleyliew.com/2011_10_01_archive.html"});
 		
 		var imagesStr = "";
