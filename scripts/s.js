@@ -44,7 +44,9 @@ var KilledCounter = function() {
 		this.initializeAndSelectBackground();
 		var _this = this;
 		$("#version").load("DEPLOYED_VERSION.txt");
-	
+		$("#morelink").click(function() {
+			$("#moreinfo").show();
+		});
 		setTimeout(function() {
 			$("#floater").fadeIn({duration:3000});
 		}, 3000);

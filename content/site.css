@@ -98,3 +98,16 @@ html {
 	width:0px;
 	overflow:hidden;
 }
+
+#more {
+	float:right;
+	width:50px;
+	font-size:2em;
+}
+
+#morelink {
+}
+
+#moreinfo {
+	display:none;
+}
