@@ -7,6 +7,7 @@ var KilledCounter = function() {
 		tickLength : 100,
 		ticksBeforeImageChange: 5000,
 		domain : "killedsofar.com",
+		includeMarineLife : true,
 	}
 
 	this.start = function() {
@@ -40,14 +41,16 @@ var KilledCounter = function() {
 	this.initializeInterface = function() {
 		this.positionCounter();
 		this.initializeAndSelectBackground();
+		var _this = this;
 		$("#version").load("DEPLOYED_VERSION.txt");
-		
+	
 		setTimeout(function() {
 			$("#floater").fadeIn({duration:3000});
 		}, 3000);
 		setTimeout(function() {
 			$("#comments-wrapper").fadeIn({duration:1000});
 		}, 5000);
+		$("#include-fish-checkbox").prop("checked",this.settings.includeMarineLife);
 		this.doUpdate();
 	}
 	
@@ -68,7 +71,8 @@ var KilledCounter = function() {
 		this.countervalues = {
 		};
 		this.countervalues.ticklength = 50;
-		this.countervalues.total = 59000000000;
+		this.countervalues.total = !this.settings.includeMarineLife ?
+			59000000000 : 1059000000000;			 
 		this.countervalues.perday = this.countervalues.total / 365;
 		this.countervalues.perhour = this.countervalues.perday / 24;
 		this.countervalues.permin = this.countervalues.perhour / 60;
@@ -95,6 +99,14 @@ var KilledCounter = function() {
 	this.updateCurrentValue = function() {
 		
 		this.currDate = new Date();
+		if (!$("#include-fish-checkbox").is(':checked')) {
+			this.settings.includeMarineLife = false;
+		}
+		else {
+			this.settings.includeMarineLife = true;
+		}
+	
+		this.initializeCounterValues();
 	
 		this.currentVal = (this.countervalues.perday*this.countervalues.doy)
 			+(this.currDate.getHours()*this.countervalues.perhour)
