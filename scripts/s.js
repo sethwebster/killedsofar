@@ -93,7 +93,7 @@ var KilledCounter = function() {
 			// Mozilla HACK
 			pointer = document;
 		}
-		var top = $(pointer).height()-260; 
+		var top = $(pointer).height()-290; 
 		$("#floater").css("top",top+"px");
 	}
 	
