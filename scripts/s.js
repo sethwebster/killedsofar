@@ -7,7 +7,7 @@ var KilledCounter = function() {
 		tickLength : 100,
 		ticksBeforeImageChange: 5000,
 		domain : "killedsofar.com",
-		includeMarineLife : true,
+		includeMarineLife : false,
 	}
 
 	this.start = function() {
