@@ -19,7 +19,7 @@ var KilledCounter = function() {
 		this.initializeImages();
 		this.initializeInterface();
 		
-	}x1
+	}
 	
 	this.initializeImages = function() {
 		this.images.push({path:"images/Slaughterhouse_cattle_bodies.jpg",credit:"Anonymous"});
