@@ -12,14 +12,14 @@ var KilledCounter = function() {
 
 	this.start = function() {
 		var domain = "killedsofar.com";
-		if (document.domain!=domain && document.domain!="")
-			window.location = "http://"+domain;
+		/*if (document.domain!=domain && document.domain!="")
+			window.location = "http://"+domain;*/
 	
 		this.initializeCounterValues();
 		this.initializeImages();
 		this.initializeInterface();
 		
-	}
+	}x1
 	
 	this.initializeImages = function() {
 		this.images.push({path:"images/Slaughterhouse_cattle_bodies.jpg",credit:"Anonymous"});
@@ -128,7 +128,7 @@ var KilledCounter = function() {
 		this.updateCurrentValue();
 		
 		$("#total").html(numberWithCommas(Math.round(this.currentVal)));
-		
+		$(".st_twitter_vcount").attr("st_summary",this.currentVal+" animals have been killed for food so far this year.");
 		var _this = this;
 		var t = setTimeout(function() {
 			_this.doUpdate();
