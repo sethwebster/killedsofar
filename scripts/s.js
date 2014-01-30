@@ -129,17 +129,22 @@ var KilledCounter = function() {
 		
 		this.updateCurrentValue();
 		var prettyNumber = numberWithCommas(Math.round(this.currentVal));
-		$("#total").html(prettyNumber);
-		$(".st_twitter_vcount").attr("st_summary",prettyNumber + " animals have been killed for food so far this year.");
-		$("#meta-title").attr("content",prettyNumber + " animals have been killed for food so far this year.");
-		document.title = prettyNumber + " animals have been killed so far for food this year."
+		
+		this.updateInterface(prettyNumber);
+
+		
+		this.scheduleNextUpdate();
+	}
+
+	this.updateInterface = function(n) {
+
+		$("#total").html(n);
+		document.title = n + " animals have been killed so far for food this year.";
+		
+	}
+
+	this.scheduleNextUpdate = function () {
 		var _this = this;
-
-		//alert(getUrlVars()["token"]);
-		if (getUrlVars()["amount"]==null){
-			document.location.href+= "?amount=" + prettyNumber;
-		}
-
 		// Recurse
 		var t = setTimeout(function() {
 			_this.doUpdate();
