@@ -53,6 +53,7 @@ var KilledCounter = function() {
 			$("#comments-wrapper").fadeIn({duration:1000});
 		}, 5000);
 		$("#include-fish-checkbox").prop("checked",this.settings.includeMarineLife);
+
 		this.doUpdate();
 	}
 	
@@ -131,7 +132,14 @@ var KilledCounter = function() {
 		$("#total").html(prettyNumber);
 		$(".st_twitter_vcount").attr("st_summary",prettyNumber + " animals have been killed for food so far this year.");
 		$("#meta-title").attr("content",prettyNumber + " animals have been killed for food so far this year.");
+		document.title = prettyNumber + " animals have been killed so far for food this year."
 		var _this = this;
+
+		if (document.location.hash==""){
+			document.location.href+= "#" + this.currentVal;
+		}
+
+		// Recurse
 		var t = setTimeout(function() {
 			_this.doUpdate();
 		}, this.settings.tickLength);
