@@ -144,7 +144,7 @@ var KilledCounter = function() {
 	this.updateInterface = function(n) {
 
 		$("#total").html(n);
-		if (this.selectedImageIndex==0)
+		if (new Date().getTime() % 5 == 0)
 		{
 			document.title = n + " animals have been killed so far for food this year.";
 		}
