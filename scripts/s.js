@@ -135,8 +135,9 @@ var KilledCounter = function() {
 		document.title = prettyNumber + " animals have been killed so far for food this year."
 		var _this = this;
 
-		if (document.location.hash==""){
-			document.location.href+= "#" + this.currentVal;
+		//alert(getUrlVars()["token"]);
+		if (getUrlVars()["amount"]==null){
+			document.location.href+= "?amount=" + prettyNumber;
 		}
 
 		// Recurse
@@ -160,6 +161,18 @@ function numberWithCommas(x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
  
+function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
 $(document).ready(function() { 
 	var k = new KilledCounter();
 	k.start();
