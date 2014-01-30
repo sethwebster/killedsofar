@@ -1,13 +1,25 @@
 var KilledCounter = function() {
 	
 	this.selectedImageIndex = -1;
-	this.images = Array();
+	this.images = [
+		{ path:"images/Slaughterhouse_cattle_bodies.jpg", credit:"Anonymous" },
+		{ path:"images/Slaughterhouse-Floor.jpg", credit:"Anonymous" },
+		{ path:"images/BeautifulCow.jpg", credit:"Jim Champion, Flickr" },
+		{ path:"images/Lamb.jpg", credit:"Donald Macleod, Flickr" },
+		{ path:"images/Piglet.jpg", credit:"Sander van der Wel, Flickr" },
+		{ path:"images/calf-bw.jpg", credit:"Edward Dalmulder, Flickr" },
+		{ path:"images/chicken1.jpg", credit:"cuatrok77, Flickr" },
+		{ path:"images/Cute%20piglet.jpg", credit:"http://www.stanleyliew.com/2011_10_01_archive.html" },
+		{ path:"images/Rocky.jpg", credit:"http://sethwebster.com, Seth Webster" }
+	];
 	
 	this.settings = {
 		tickLength : 100,
 		ticksBeforeImageChange: 5000,
 		domain : "killedsofar.com",
 		includeMarineLife : false,
+		totalAnimalsKilledPerYear : 59000000000,
+		totalAnimalsKilledPerYearWithMarineLife : 1059000000000
 	}
 
 	this.start = function() {
@@ -22,21 +34,14 @@ var KilledCounter = function() {
 	}
 	
 	this.initializeImages = function() {
-		this.images.push({path:"images/Slaughterhouse_cattle_bodies.jpg",credit:"Anonymous"});
-		this.images.push({path:"images/Slaughterhouse-Floor.jpg",credit:"Anonymous"});
-		this.images.push({path:"images/BeautifulCow.jpg",credit:"Jim Champion, Flickr"});
-		this.images.push({path:"images/Lamb.jpg",credit:"Donald Macleod, Flickr"});
-		this.images.push({path:"images/Piglet.jpg",credit:"Sander van der Wel, Flickr"});
-		this.images.push({path:"images/calf-bw.jpg",credit:"Edward Dalmulder, Flickr"});
-		this.images.push({path:"images/chicken1.jpg",credit:"cuatrok77, Flickr"});
-		this.images.push({path:"images/Cute%20piglet.jpg",credit:"http://www.stanleyliew.com/2011_10_01_archive.html"});
-		this.images.push({path:"images/Rocky.jpg",credit:"http://sethwebster.com, Seth Webster"});
+		this.images.push();
 		
 		var imagesStr = "";
 		for(var i=0;i<this.images.length;i++)
 		{
 			imagesStr+="<img src='"+this.images[i].path+"'/>";
 		}
+		
 		$("#hiddenimages").html(imagesStr);
 	}
 	
@@ -75,7 +80,7 @@ var KilledCounter = function() {
 		};
 		this.countervalues.ticklength = 50;
 		this.countervalues.total = !this.settings.includeMarineLife ?
-			59000000000 : 1059000000000;			 
+			this.settings.totalAnimalsKilledPerYear : this.settings.totalAnimalsKilledPerYearWithMarineLife;			 
 		this.countervalues.perday = this.countervalues.total / 365;
 		this.countervalues.perhour = this.countervalues.perday / 24;
 		this.countervalues.permin = this.countervalues.perhour / 60;
