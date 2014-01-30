@@ -41,7 +41,7 @@ var KilledCounter = function() {
 		{
 			imagesStr+="<img src='"+this.images[i].path+"'/>";
 		}
-		
+
 		$("#hiddenimages").html(imagesStr);
 	}
 	
@@ -144,8 +144,10 @@ var KilledCounter = function() {
 	this.updateInterface = function(n) {
 
 		$("#total").html(n);
-		document.title = n + " animals have been killed so far for food this year.";
-		
+		if (this.selectedImageIndex==0)
+		{
+			document.title = n + " animals have been killed so far for food this year.";
+		}
 	}
 
 	this.scheduleNextUpdate = function () {
