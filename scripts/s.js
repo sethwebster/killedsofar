@@ -127,9 +127,10 @@ var KilledCounter = function() {
 		}
 		
 		this.updateCurrentValue();
-		
-		$("#total").html(numberWithCommas(Math.round(this.currentVal)));
-		$(".st_twitter_vcount").attr("st_summary",this.currentVal+" animals have been killed for food so far this year.");
+		var prettyNumber = numberWithCommas(Math.round(this.currentVal));
+		$("#total").html(prettyNumber);
+		$(".st_twitter_vcount").attr("st_summary",prettyNumber + " animals have been killed for food so far this year.");
+		$("#meta-title").attr("content",prettyNumber + " animals have been killed for food so far this year.");
 		var _this = this;
 		var t = setTimeout(function() {
 			_this.doUpdate();
