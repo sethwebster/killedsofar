@@ -1,1 +1,6 @@
 DEPLOYED_VERSION.txt
+.vercel
+node_modules/
+.vscode/
+.next/
+.DS_Store
