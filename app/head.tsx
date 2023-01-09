@@ -26,7 +26,7 @@ export default function Head({ params }: { params: { slug: string } }) {
       <meta property="og:type" content="website" />
       <meta
         property="og:image"
-        content="http://killedsofar.com/images/Piglet.jpg"
+        content="http://killedsofar.org/images/Piglet.jpg"
       />
 
       <meta property="fb:app_id" content="567092209977627" />
