@@ -16,6 +16,13 @@ export default function Head({ params }: { params: { slug: string } }) {
           killed
         ).toLocaleString("en-US")}) this year for food.`}
       />
+      <meta name="og:url" content="https://killedsofar.org" />
+      <meta
+        name="og:description"
+        content={`A real-time counter showing the number of animals killed so far (${Math.round(
+          killed
+        ).toLocaleString("en-US")}) this year for food.`}
+      />
       <meta
         property="og:title"
         content={`How many animals have been killed so far this year for food? Answer: ${Math.round(
