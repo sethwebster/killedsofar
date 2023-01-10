@@ -17,14 +17,14 @@ let data: AnimalData = {
   ducks: 22484000,
   sheep: 2225000,
   aquatic: 55429141000,
-  total: -1
+  total: 65188318000,
 }
 
-const total = Object.keys(data).reduce((acc, key) => acc + (data as any as Record<string, number>)[key], 0)
-
-data = {
-  ...data,
-  total
-}
+// // const total = Object.keys(data).reduce((acc, key) => acc + (data as any as Record<string, number>)[key], 0)
+// console.log("TOTAL",)
+// data = {
+//   ...data,
+//   total
+// }
 
 export default data;

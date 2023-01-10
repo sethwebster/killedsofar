@@ -1,7 +1,19 @@
-import getAnimalsKilledToDate from "../helpers/getAnimalsKilledToDate";
+import data from "../data";
+import getAnimalsKilledToDate, {
+  getAnimalsKilledSince,
+} from "../helpers/getAnimalsKilledToDate";
 
-export default function Head({ params }: { params: { slug: string } }) {
-  const killed = getAnimalsKilledToDate();
+console.log(getAnimalsKilledToDate(), "DATE");
+console.log(getAnimalsKilledSince(new Date("01/01/2023"), data.total), "DATE");
+
+async function getAnimalsKilledToDateAsync() {
+  return new Promise((resolve) => {
+    resolve(getAnimalsKilledToDate());
+  });
+}
+
+export default async function Head({ params }: { params: { slug: string } }) {
+  const killed = await getAnimalsKilledToDate();
   const title = `How many animals have been killed so far this year for food? Answer: ${Math.round(
     killed
   ).toLocaleString("en-US")} as of ${new Date().toLocaleString("en-US")}`;
