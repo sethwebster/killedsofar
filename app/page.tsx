@@ -1,7 +1,4 @@
-import FPSCounter from "@sethwebster/react-fps-counter";
-import Head from "next/head";
 import Counter from "../components/Counter";
-import FPS from "../components/FPS";
 import GenericCounter from "../components/GenericCounter";
 import RotatingBackgroundImageWrapper from "../components/RotatingBackgroundImageWrapper";
 import data from "../data";
