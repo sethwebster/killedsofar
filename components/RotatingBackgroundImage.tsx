@@ -1,7 +1,8 @@
 "use client";
 import FPSCounter from "@sethwebster/react-fps-counter";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import GlobalTimeCoordinator from "./GlobalTimeCoordinator";
 
 const WrappedImage = ({ image, credit, visible = true }: ImageType & { visible?: boolean }) => {
   return (
@@ -29,15 +30,16 @@ export default function RotatingBackgroundImages({
   children: React.ReactNode | React.ReactNode[];
 }) {
   const [imageIndex, setImageIndex] = useState(0);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setImageIndex((imageIndex) => (imageIndex + 1) % images.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [images]);
+
+  const tick = useCallback(()=>{
+    setImageIndex((imageIndex) => (imageIndex + 1) % images.length);
+  },[images.length]);
+
   const nextImageIndex = (imageIndex + 1) % images.length;
+  
   return (
     <div className="h-full w-full">
+      <GlobalTimeCoordinator onSignalRaised={tick} signalOn="seconds" signalValue={5} />
       <WrappedImage {...images[imageIndex]} visible={true} />
       <WrappedImage {...images[nextImageIndex]} visible={false} />
       <div className="absolute w-full h-full z-10">{children}</div>

@@ -1,13 +1,3 @@
-interface AnimalData {
-  chickens: number;
-  turkeys: number;
-  cattle: number;
-  pigs: number;
-  ducks: number;
-  sheep: number;
-  aquatic: number;
-  total: number;
-}
 
 let data: AnimalData = {
   chickens: 9346660000,
@@ -18,6 +8,17 @@ let data: AnimalData = {
   sheep: 2225000,
   aquatic: 55429141000,
   total: 65188318000,
+}
+
+export const EMPTY_DATA: AnimalData = {
+  chickens: 0,
+  turkeys: 0,
+  cattle: 0,
+  pigs: 0,
+  ducks: 0,
+  sheep: 0,
+  aquatic: 0,
+  total: 0,
 }
 
 // // const total = Object.keys(data).reduce((acc, key) => acc + (data as any as Record<string, number>)[key], 0)

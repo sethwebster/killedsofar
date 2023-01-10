@@ -1,6 +1,7 @@
 import { GetStaticPropsContext, GetStaticPropsResult } from "next";
+import AdditionalCounters from "../components/AdditionalCounters";
 import Counter from "../components/Counter";
-import GenericCounter from "../components/GenericCounter";
+import GenericCounter from "../components/GenericCounterDisplay";
 import RotatingBackgroundImageWrapper from "../components/RotatingBackgroundImageWrapper";
 import data from "../data";
 
@@ -15,14 +16,7 @@ export default function LandingPage() {
             <Counter />
           </div>
           <div className="flex flex-row flex-wrap w-full mt-10">
-            <GenericCounter animalsPerYear={data.chickens} text="Chickens" />
-            <GenericCounter animalsPerYear={data.turkeys} text="Turkeys" />
-            <GenericCounter animalsPerYear={data.cattle} text="Cattle" />
-            <GenericCounter animalsPerYear={data.ducks} text="Ducks" />
-            <GenericCounter animalsPerYear={data.sheep} text="Sheep" />
-            <GenericCounter animalsPerYear={data.pigs} text="Pigs" />
-            <GenericCounter animalsPerYear={data.aquatic} text="Sea Life" />
-            <GenericCounter animalsPerYear={data.total} text="Total" />
+            <AdditionalCounters />
           </div>
           <h1 className="text-white text-2xl text-center mt-10 drop-shadow-md">
             Since you got here
