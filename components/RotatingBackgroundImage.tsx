@@ -39,7 +39,7 @@ export default function RotatingBackgroundImages({
   
   return (
     <div className="h-full w-full">
-      <GlobalTimeCoordinator onSignalRaised={tick} signalOn="seconds" signalValue={5} />
+      <GlobalTimeCoordinator onSignalRaised={tick} signalOn="seconds" signalValue={5} skipFirst/>
       <WrappedImage {...images[imageIndex]} visible={true} />
       <WrappedImage {...images[nextImageIndex]} visible={false} />
       <div className="absolute w-full h-full z-10">{children}</div>

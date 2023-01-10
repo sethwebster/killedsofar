@@ -80,26 +80,23 @@ export default function GlobalTimeCoordinator({
   signalOn,
   signalValue,
   onSignalRaised,
+  skipFirst,
 }: {
   signalOn: TimeType;
   signalValue: number;
   onSignalRaised: () => void;
+  skipFirst?: boolean;
 }) {
   const interval = useRef<NodeJS.Timer | null>();
+  const invocationCount = useRef(0);
 
-  let duration = 1000;
-  switch (signalOn) {
-    case "hours":
-      duration = 3600000;
-      break;
-    case "minutes":
-      duration = 60000;
-      break;
-  }
   const tick = useCallback(() => {
-    onSignalRaised();
+    if (!skipFirst || invocationCount.current > 0) {
+      onSignalRaised();
+    } 
+    invocationCount.current++;
     setTimeout(tick, getMsToNextOccurence(signalOn, "every", signalValue));
-  }, [onSignalRaised, signalOn, signalValue]);
+  }, [onSignalRaised, signalOn, signalValue, skipFirst]);
 
   useEffect(() => {
     let timeToNextOccurrence = getMsToNextOccurence(
@@ -114,6 +111,6 @@ export default function GlobalTimeCoordinator({
         clearInterval(interval.current);
       }
     };
-  }, [duration, onSignalRaised, signalOn, signalValue, tick]);
+  }, [onSignalRaised, signalOn, signalValue, skipFirst, tick]);
   return <></>;
 }

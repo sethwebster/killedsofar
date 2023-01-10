@@ -27,6 +27,7 @@ export default function AdditionalCounters({
         onSignalRaised={tick}
         signalOn="seconds"
         signalValue={5}
+        skipFirst
       />
 
       <GenericCounterDisplay
