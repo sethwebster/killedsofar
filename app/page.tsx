@@ -1,7 +1,10 @@
+import { GetStaticPropsContext, GetStaticPropsResult } from "next";
 import Counter from "../components/Counter";
 import GenericCounter from "../components/GenericCounter";
 import RotatingBackgroundImageWrapper from "../components/RotatingBackgroundImageWrapper";
 import data from "../data";
+
+export const revalidate = 60
 
 export default function LandingPage() {
   return (
