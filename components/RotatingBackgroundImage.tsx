@@ -4,9 +4,13 @@ import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import GlobalTimeCoordinator from "./GlobalTimeCoordinator";
 
-const WrappedImage = ({ image, credit, visible = true }: ImageType & { visible?: boolean }) => {
+const WrappedImage = ({
+  image,
+  credit,
+  visible = true,
+}: ImageType & { visible?: boolean }) => {
   return (
-    <div className={`absolute w-full h-full z-0 ${visible ? '' : 'opacity-0'}`}>
+    <div className={`absolute w-full h-full z-0 ${visible ? "" : "opacity-0"}`}>
       <Image
         src={image}
         alt={credit}
@@ -31,19 +35,23 @@ export default function RotatingBackgroundImages({
 }) {
   const [imageIndex, setImageIndex] = useState(0);
 
-  const tick = useCallback(()=>{
+  const tick = useCallback(() => {
     setImageIndex((imageIndex) => (imageIndex + 1) % images.length);
-  },[images.length]);
+  }, [images.length]);
 
   const nextImageIndex = (imageIndex + 1) % images.length;
-  
+
   return (
     <div className="h-full w-full">
-      <GlobalTimeCoordinator onSignalRaised={tick} signalOn="seconds" signalValue={5} skipFirst/>
+      <GlobalTimeCoordinator
+        onSignalRaised={tick}
+        signalOn="seconds"
+        signalValue={5}
+        skipFirst
+      />
       <WrappedImage {...images[imageIndex]} visible={true} />
       <WrappedImage {...images[nextImageIndex]} visible={false} />
       <div className="absolute w-full h-full z-10">{children}</div>
     </div>
   );
 }
-

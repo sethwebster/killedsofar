@@ -76,6 +76,42 @@ function getMsToNextOccurence(
   }
 }
 
+interface QueueItem {
+  triggerTime: number;
+  callback: () => void;
+}
+
+class GlobalTimedQueue {
+  interval: NodeJS.Timeout | null = null;
+  queue: QueueItem[] = [];
+  constructor() {
+    this.interval = setTimeout(() => this._tick(), 1000);
+  }
+
+  _tick() {
+    const toTrigger = this.queue.filter((q) => q.triggerTime <= Date.now());
+    this.queue = this.queue.reduce(
+      (all, curr) => (toTrigger.includes(curr) ? all : [...all, curr]),
+      [] as QueueItem[]
+    );
+    while (toTrigger.length > 0) {
+      const item = toTrigger.shift();
+      item?.callback();
+    }
+    setTimeout(() => this._tick(), 1000);
+  }
+
+  add({ triggerTime, callback }: QueueItem) {
+    this.queue.push({ triggerTime, callback });
+  }
+
+  remove(callback: () => void) {
+    this.queue = this.queue.filter((q) => q.callback !== callback);
+  }
+}
+
+const globalTimedQueue = new GlobalTimedQueue();
+
 export default function GlobalTimeCoordinator({
   signalOn,
   signalValue,
@@ -90,27 +126,22 @@ export default function GlobalTimeCoordinator({
   const interval = useRef<NodeJS.Timer | null>();
   const invocationCount = useRef(0);
 
-  const tick = useCallback(() => {
+  const callback = useCallback(() => {
     if (!skipFirst || invocationCount.current > 0) {
       onSignalRaised();
-    } 
+    }
     invocationCount.current++;
-    setTimeout(tick, getMsToNextOccurence(signalOn, "every", signalValue));
+    const triggerTime =
+      Date.now() + getMsToNextOccurence(signalOn, "every", signalValue);
+    globalTimedQueue.add({ triggerTime, callback });
   }, [onSignalRaised, signalOn, signalValue, skipFirst]);
 
   useEffect(() => {
-    let timeToNextOccurrence = getMsToNextOccurence(
-      signalOn,
-      "every",
-      signalValue
-    );
+    let triggerTime =
+      Date.now() + getMsToNextOccurence(signalOn, "every", signalValue);
 
-    interval.current = setTimeout(tick, timeToNextOccurrence);
-    return () => {
-      if (interval.current) {
-        clearInterval(interval.current);
-      }
-    };
-  }, [onSignalRaised, signalOn, signalValue, skipFirst, tick]);
+    globalTimedQueue.add({ triggerTime, callback });
+    return () => globalTimedQueue.remove(callback);
+  }, [callback, onSignalRaised, signalOn, signalValue, skipFirst]);
   return <></>;
 }
